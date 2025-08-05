@@ -12,13 +12,13 @@
             color: #4a2c2a;
         }
 
-        .top-photo {
+        .top-photo img {
             width: 100%;
-            height: 300px;
-            background-image: url('rojal.png');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 5px solid #f3c6c6;
+            height: auto;
+            max-height: 350px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
         }
 
         .container {
@@ -26,7 +26,6 @@
             margin: auto;
             background-color: #fffafa;
             padding: 40px;
-            margin-top: -20px;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -91,12 +90,14 @@
 
     <!-- Soft Background Music -->
     <audio autoplay loop>
-        <source src="your-music.mp3" type="audio/mpeg">
+        <source src="Chale Aana De De Pyaar De 320 Kbps.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Top Photo -->
-    <div class="top-photo"></div>
+    <!-- Top Photo inserted using HTML img tag -->
+    <div class="top-photo">
+        <img src="rojal.jpg" alt="Our Beautiful Moment">
+    </div>
 
     <!-- Content -->
     <div class="container">
