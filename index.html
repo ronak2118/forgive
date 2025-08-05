@@ -53,6 +53,7 @@
         .buttons {
             margin-top: 40px;
             position: relative;
+            height: 60px; /* reserve space for buttons */
         }
 
         button {
@@ -64,7 +65,9 @@
             cursor: pointer;
             background-color: #ff9999;
             color: white;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            display: inline-block;
         }
 
         button:hover {
@@ -72,16 +75,14 @@
         }
 
         #noBtn {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: transform 0.2s ease;
             animation: shake 0.5s infinite alternate;
+            user-select: none;
         }
 
         @keyframes shake {
-            0% { transform: translateX(-50%) translateY(0); }
-            100% { transform: translateX(-50%) translateY(-5px); }
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
         }
 
         #response {
@@ -111,7 +112,7 @@
 
     <!-- Top Photo inserted using HTML img tag -->
     <div class="top-photo">
-        <img src="rojal.png" alt="Our Beautiful Moment">
+        <img src="rojal.png" alt="Our Beautiful Moment" />
     </div>
 
     <!-- Content -->
@@ -173,7 +174,7 @@
         <div class="buttons">
             <p><strong>Do you love me or not?</strong></p>
             <button onclick="showResponse(true)">Yes 🍌</button>
-            <button id="noBtn" onclick="runAway()">No 😔</button>
+            <button id="noBtn">No 😔</button>
         </div>
 
         <!-- Response Text -->
@@ -186,24 +187,57 @@
     </div>
 
     <script>
+        const noBtn = document.getElementById('noBtn');
+        const originalPosition = { left: 0, top: 0 };
+        let isMoving = false;
+
+        // Save the original position after page loads
+        window.onload = () => {
+            const rect = noBtn.getBoundingClientRect();
+            const parentRect = noBtn.parentElement.getBoundingClientRect();
+            // position relative to parent container
+            originalPosition.left = rect.left - parentRect.left;
+            originalPosition.top = rect.top - parentRect.top;
+            // Make button position relative for animation
+            noBtn.style.position = 'relative';
+            noBtn.style.left = '0px';
+            noBtn.style.top = '0px';
+        };
+
+        function runAway() {
+            if (isMoving) return;
+            isMoving = true;
+
+            // Calculate random offset but keep it small so button doesn't vanish
+            const maxOffset = 80; // px max left/right movement
+            const offsetX = (Math.random() * maxOffset * 2) - maxOffset; // from -80 to +80px
+
+            // Animate button moving away
+            noBtn.style.transition = 'transform 0.2s ease';
+            noBtn.style.transform = `translateX(${offsetX}px)`;
+
+            // After short delay, move back to original position
+            setTimeout(() => {
+                noBtn.style.transition = 'transform 0.5s ease';
+                noBtn.style.transform = 'translateX(0)';
+            }, 300);
+
+            setTimeout(() => {
+                isMoving = false;
+            }, 800);
+        }
+
+        noBtn.addEventListener('mouseenter', runAway);
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();  // Prevent click action so user can't select "No"
+            runAway();
+        });
+
         function showResponse(isYes) {
             const responseDiv = document.getElementById("response");
             if (isYes) {
                 responseDiv.innerHTML = "🥰 Thank you for loving me this much 🍌<br>I was knowing it deep in my heart.";
             }
-        }
-
-        function runAway() {
-            const btn = document.getElementById("noBtn");
-            const container = document.querySelector(".container");
-            const containerRect = container.getBoundingClientRect();
-
-            // Get random position within container bounds
-            const x = Math.random() * (containerRect.width - 100);
-            const y = Math.random() * (containerRect.height - 100);
-
-            btn.style.left = `${x}px`;
-            btn.style.top = `${y}px`;
         }
     </script>
 
