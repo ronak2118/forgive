@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I'm Sorry, My Love</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffe6e6, #fff0f5);
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            color: #4a2c2a;
+        }
+
+        .top-photo {
+            width: 100%;
+            height: 300px;
+            background-image: url('rojal.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid #f3c6c6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fffafa;
+            padding: 40px;
+            margin-top: -20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #c0392b;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            font-size: 60px;
+            color: #e74c3c;
+            margin: 30px 0;
+        }
+
+        .buttons {
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1em;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ff9999;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67373;
+        }
+
+        #response {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Soft Background Music -->
+    <audio autoplay loop>
+        <source src="your-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Top Photo -->
+    <div class="top-photo"></div>
+
+    <!-- Content -->
+    <div class="container">
+        <h1>I'm So Sorry, My Love 💔</h1>
+
+        <p>
+            I know I messed up. I said things I didn’t mean and behaved in ways I’m ashamed of.<br>
+            It breaks my heart knowing I made you feel hurt, unloved, or disrespected.
+        </p>
+
+        <p>
+            You are not just my wife — you are my best friend, my soulmate, my everything. Hurting you is the last thing I ever want to do.
+        </p>
+
+        <p>
+            I’ve been sitting alone, thinking about how I’ve taken your kindness for granted, your patience, your love. 
+            And I realize now how lucky I am to have someone like you in my life.
+        </p>
+
+        <p>
+            I miss the way you laugh, the way you look at me when I say something silly. I miss your hugs, your voice, your presence around me. 
+            The silence without you is painful, and it only reminds me of what I did wrong.
+        </p>
+
+        <div class="heart">❤️ 😘 💋</div>
+
+        <p>
+            I don’t want to be the reason for your tears. I want to be the reason you smile every day. I want to be the man who lifts you up, supports you, and loves you unconditionally — not the one who breaks your heart.
+        </p>
+
+        <p>
+            Every moment we’ve shared — the late-night talks, the silly jokes, the warm embraces — they are pieces of my heart. 
+            And I want to protect those memories, not damage them with carelessness.
+        </p>
+
+        <p>
+            I promise to grow. I promise to pause and think before I speak. I promise to never let my ego speak louder than my love. 
+            I promise to be better — not just for you, but for *us*.
+        </p>
+
+        <p>
+            Please give me the chance to prove that I can love you in the way you truly deserve — with gentleness, respect, and depth. 
+            I know it may take time, but I am ready to earn your trust again.
+        </p>
+
+        <div class="heart">💖</div>
+
+        <p>
+            So here I am, writing this from the heart, hoping that when you read these words, you feel my soul speaking to yours. 
+            Hoping that despite everything, you still feel the love I have for you. Because it’s real. It’s deep. It’s forever.
+        </p>
+
+        <p>
+            I’m sorry, my love. I’m here. I’m waiting. And I’ll never stop loving you.
+        </p>
+
+        <!-- Love Button Section -->
+        <div class="buttons">
+            <p><strong>Do you love me or not?</strong></p>
+            <button onclick="showResponse(true)">Yes ❤️</button>
+            <button onclick="showResponse(false)">No 😔</button>
+        </div>
+
+        <!-- Response Text -->
+        <div id="response"></div>
+
+        <footer>
+            Forever yours,<br>
+            [Your Name]
+        </footer>
+    </div>
+
+    <script>
+        function showResponse(isYes) {
+            const responseDiv = document.getElementById("response");
+            if (isYes) {
+                responseDiv.innerHTML = "🥰 Thank you for loving me this much ❤️<br>I was knowing it deep in my heart.";
+            } else {
+                responseDiv.innerHTML = "😢 Sorry babe, wrong answer...<br>But I still love you more than ever.";
+            }
+        }
+    </script>
+
+</body>
+</html>
