@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>I'm Sorry, My Love</title>
     <style>
         body {
@@ -29,6 +29,7 @@
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
         }
 
         h1 {
@@ -51,6 +52,7 @@
 
         .buttons {
             margin-top: 40px;
+            position: relative;
         }
 
         button {
@@ -67,6 +69,19 @@
 
         button:hover {
             background-color: #e67373;
+        }
+
+        #noBtn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: transform 0.2s ease;
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(-50%) translateY(0); }
+            100% { transform: translateX(-50%) translateY(-5px); }
         }
 
         #response {
@@ -135,7 +150,7 @@
 
         <p>
             I promise to grow. I promise to pause and think before I speak. I promise to never let my ego speak louder than my love. 
-            I promise to be better — not just for you, but for *us*.
+            I promise to be better — not just for you, but for <em>us</em>.
         </p>
 
         <p>
@@ -157,8 +172,8 @@
         <!-- Love Button Section -->
         <div class="buttons">
             <p><strong>Do you love me or not?</strong></p>
-            <button onclick="showResponse(true)">Yes 🍌</button>
-            <button onclick="showResponse(false)">No 😔</button>
+            <button onclick="showResponse(true)">Yes ❤️</button>
+            <button id="noBtn" onclick="runAway()">No 😔</button>
         </div>
 
         <!-- Response Text -->
@@ -174,10 +189,21 @@
         function showResponse(isYes) {
             const responseDiv = document.getElementById("response");
             if (isYes) {
-                responseDiv.innerHTML = "🥰 Thank you for loving me this much 🍌<br>I was knowing it deep in my heart.";
-            } else {
-                responseDiv.innerHTML = "😢 Sorry babe, wrong answer...<br>But I still love you more than ever.";
+                responseDiv.innerHTML = "🥰 Thank you for loving me this much ❤️<br>I was knowing it deep in my heart.";
             }
+        }
+
+        function runAway() {
+            const btn = document.getElementById("noBtn");
+            const container = document.querySelector(".container");
+            const containerRect = container.getBoundingClientRect();
+
+            // Get random position within container bounds
+            const x = Math.random() * (containerRect.width - 100);
+            const y = Math.random() * (containerRect.height - 100);
+
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
         }
     </script>
 
